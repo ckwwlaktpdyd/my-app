@@ -138,20 +138,10 @@ export const Large = {
 };
 
 export const AllVariants = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <Badge variant="default">Default</Badge>
-      <Badge variant="primary">Primary</Badge>
-      <Badge variant="success">Success</Badge>
-      <Badge variant="warning">Warning</Badge>
-      <Badge variant="error">Error</Badge>
-      <Badge variant="info">Info</Badge>
-      <Badge variant="outline">Outline</Badge>
-      <Badge variant="outline-success">Outline Success</Badge>
-      <Badge variant="outline-warning">Outline Warning</Badge>
-      <Badge variant="outline-error">Outline Error</Badge>
-    </div>
-  ),
+  args: {
+    variant: 'default',
+    children: 'All Variants',
+  },
   parameters: {
     design: {
       type: 'figma',
