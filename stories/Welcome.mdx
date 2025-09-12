@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="시작하기" />
+
+# 🚀 Storybook에 오신 것을 환영합니다!
+
+이제 깨끗한 상태의 Storybook입니다. 
+
+## 🎯 다음 단계
+
+1. **새로운 컴포넌트 생성**: `stories/` 폴더에 컴포넌트를 추가하세요
+2. **스토리 작성**: `.stories.js` 파일로 컴포넌트 스토리를 만드세요
+3. **Figma 연동**: `@storybook/addon-designs`로 디자인을 연결하세요
+
+## 📚 예시 구조
+
+```
+stories/
+├── Button/
+│   ├── Button.jsx
+│   ├── Button.stories.js
+│   └── Button.css
+└── Card/
+    ├── Card.jsx
+    ├── Card.stories.js
+    └── Card.css
+```
+
+## 🎨 Figma 연동 예시
+
+```javascript
+export const Primary = {
+  args: {
+    label: 'Button',
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YOUR_FIGMA_URL',
+    },
+  },
+};
+```
+
+---
+
+**준비가 되었습니다! 새로운 컴포넌트를 만들어보세요.** ✨
