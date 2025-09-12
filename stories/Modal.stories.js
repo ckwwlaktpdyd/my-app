@@ -1,26 +1,4 @@
-import React, { useState } from 'react';
 import { Modal } from './Modal';
-import { Button } from './Button';
-
-// Wrapper component for Modal stories
-const ModalWrapper = ({ children, ...modalProps }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div>
-      <Button onClick={() => setIsOpen(true)}>
-        Open Modal
-      </Button>
-      <Modal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)}
-        {...modalProps}
-      >
-        {children}
-      </Modal>
-    </div>
-  );
-};
 
 export default {
   title: 'Reshaped Design System/Modal',
@@ -43,11 +21,11 @@ export default {
 };
 
 export const Default = {
-  render: () => (
-    <ModalWrapper title="Default Modal">
-      <p>This is a default modal with some content. You can close it by clicking the X button or clicking outside the modal.</p>
-    </ModalWrapper>
-  ),
+  args: {
+    isOpen: true,
+    title: 'Default Modal',
+    children: 'This is a default modal with some content.',
+  },
   parameters: {
     design: {
       type: 'figma',
@@ -57,11 +35,12 @@ export const Default = {
 };
 
 export const Small = {
-  render: () => (
-    <ModalWrapper title="Small Modal" size="small">
-      <p>This is a small modal.</p>
-    </ModalWrapper>
-  ),
+  args: {
+    isOpen: true,
+    title: 'Small Modal',
+    size: 'small',
+    children: 'This is a small modal.',
+  },
   parameters: {
     design: {
       type: 'figma',
@@ -71,15 +50,12 @@ export const Small = {
 };
 
 export const Large = {
-  render: () => (
-    <ModalWrapper title="Large Modal" size="large">
-      <p>This is a large modal with more space for content.</p>
-      <p>It can contain multiple paragraphs and other elements.</p>
-      <div style={{ marginTop: '20px' }}>
-        <Button variant="primary">Action Button</Button>
-      </div>
-    </ModalWrapper>
-  ),
+  args: {
+    isOpen: true,
+    title: 'Large Modal',
+    size: 'large',
+    children: 'This is a large modal with more space for content.',
+  },
   parameters: {
     design: {
       type: 'figma',
@@ -89,11 +65,12 @@ export const Large = {
 };
 
 export const WithoutCloseButton = {
-  render: () => (
-    <ModalWrapper title="No Close Button" showCloseButton={false}>
-      <p>This modal doesn't have a close button. You can only close it by clicking outside.</p>
-    </ModalWrapper>
-  ),
+  args: {
+    isOpen: true,
+    title: 'No Close Button',
+    showCloseButton: false,
+    children: 'This modal does not have a close button.',
+  },
   parameters: {
     design: {
       type: 'figma',
@@ -103,11 +80,10 @@ export const WithoutCloseButton = {
 };
 
 export const WithoutTitle = {
-  render: () => (
-    <ModalWrapper>
-      <p>This modal doesn't have a title.</p>
-    </ModalWrapper>
-  ),
+  args: {
+    isOpen: true,
+    children: 'This modal does not have a title.',
+  },
   parameters: {
     design: {
       type: 'figma',
@@ -117,12 +93,12 @@ export const WithoutTitle = {
 };
 
 export const Fullscreen = {
-  render: () => (
-    <ModalWrapper title="Fullscreen Modal" size="fullscreen">
-      <p>This is a fullscreen modal that takes up most of the viewport.</p>
-      <p>Perfect for complex forms or detailed content.</p>
-    </ModalWrapper>
-  ),
+  args: {
+    isOpen: true,
+    title: 'Fullscreen Modal',
+    size: 'fullscreen',
+    children: 'This is a fullscreen modal that takes up most of the viewport.',
+  },
   parameters: {
     design: {
       type: 'figma',
