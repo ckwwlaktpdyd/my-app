@@ -1,0 +1,124 @@
+/* Reshaped Design System Button Styles */
+
+.reshaped-button {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  outline: none;
+  position: relative;
+}
+
+/* Size variants */
+.reshaped-button--small {
+  font-size: 14px;
+  padding: 8px 16px;
+  min-height: 32px;
+}
+
+.reshaped-button--medium {
+  font-size: 16px;
+  padding: 12px 24px;
+  min-height: 44px;
+}
+
+.reshaped-button--large {
+  font-size: 18px;
+  padding: 16px 32px;
+  min-height: 52px;
+}
+
+/* Primary variant */
+.reshaped-button--primary {
+  color: white;
+  background-color: #007AFF;
+  border: 2px solid #007AFF;
+}
+
+.reshaped-button--primary:hover:not(:disabled) {
+  background-color: #0056CC;
+  border-color: #0056CC;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+}
+
+.reshaped-button--primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 122, 255, 0.3);
+}
+
+/* Secondary variant */
+.reshaped-button--secondary {
+  color: #007AFF;
+  background-color: #F0F8FF;
+  border: 2px solid #E3F2FD;
+}
+
+.reshaped-button--secondary:hover:not(:disabled) {
+  background-color: #E3F2FD;
+  border-color: #BBDEFB;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.15);
+}
+
+.reshaped-button--secondary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 122, 255, 0.15);
+}
+
+/* Outline variant */
+.reshaped-button--outline {
+  color: #007AFF;
+  background-color: transparent;
+  border: 2px solid #007AFF;
+}
+
+.reshaped-button--outline:hover:not(:disabled) {
+  background-color: #007AFF;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.25);
+}
+
+.reshaped-button--outline:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 122, 255, 0.25);
+}
+
+/* Ghost variant */
+.reshaped-button--ghost {
+  color: #007AFF;
+  background-color: transparent;
+  border: 2px solid transparent;
+}
+
+.reshaped-button--ghost:hover:not(:disabled) {
+  background-color: #F0F8FF;
+  border-color: #E3F2FD;
+  transform: translateY(-1px);
+}
+
+.reshaped-button--ghost:active:not(:disabled) {
+  transform: translateY(0);
+  background-color: #E3F2FD;
+}
+
+/* Disabled state */
+.reshaped-button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.reshaped-button--disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
