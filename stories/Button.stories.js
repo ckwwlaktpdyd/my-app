@@ -33,7 +33,7 @@ export const Primary = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=10201-4&t=X7TETj9XjKVcev9y-1',
+      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=8284-2&t=X7TETj9XjKVcev9y-1',
     },
   },
 };
@@ -47,7 +47,7 @@ export const Secondary = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=10201-4&t=X7TETj9XjKVcev9y-1',
+      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=8284-2&t=X7TETj9XjKVcev9y-1',
     },
   },
 };
@@ -61,7 +61,7 @@ export const Outline = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=10201-4&t=X7TETj9XjKVcev9y-1',
+      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=8284-2&t=X7TETj9XjKVcev9y-1',
     },
   },
 };
@@ -75,7 +75,7 @@ export const Ghost = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=10201-4&t=X7TETj9XjKVcev9y-1',
+      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=8284-2&t=X7TETj9XjKVcev9y-1',
     },
   },
 };
@@ -89,7 +89,7 @@ export const Small = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=10201-4&t=X7TETj9XjKVcev9y-1',
+      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=8284-2&t=X7TETj9XjKVcev9y-1',
     },
   },
 };
@@ -103,7 +103,7 @@ export const Large = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=10201-4&t=X7TETj9XjKVcev9y-1',
+      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=8284-2&t=X7TETj9XjKVcev9y-1',
     },
   },
 };
@@ -118,7 +118,7 @@ export const Disabled = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=10201-4&t=X7TETj9XjKVcev9y-1',
+      url: 'https://www.figma.com/design/h7mb0PPczpHRIkViaHy2YO/Reshaped-Design-System?node-id=8284-2&t=X7TETj9XjKVcev9y-1',
     },
   },
 };
