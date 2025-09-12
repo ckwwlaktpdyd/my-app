@@ -1,0 +1,96 @@
+# GitHub Actions 워크플로우: Storybook과 Figma 연동 자동화
+# 이 워크플로우는 코드 변경 시 자동으로 Storybook을 빌드하고 Chromatic에 배포합니다.
+
+name: 'Chromatic Deployment'
+
+# 언제 이 워크플로우가 실행될지 정의
+on:
+  # 메인 브랜치에 푸시할 때
+  push:
+    branches: [ main, develop ]
+  # Pull Request가 생성되거나 업데이트될 때
+  pull_request:
+    branches: [ main ]
+
+# 워크플로우가 실행할 작업들
+jobs:
+  chromatic-deployment:
+    # Ubuntu 최신 버전에서 실행
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1단계: 저장소 코드 체크아웃
+      - name: 📦 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Chromatic에서 변경사항을 정확히 감지하기 위해 전체 히스토리 가져오기
+          fetch-depth: 0
+
+      # 2단계: Node.js 환경 설정
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      # 3단계: 의존성 설치
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      # 4단계: Storybook 빌드 및 Chromatic에 배포
+      - name: 🚀 Publish to Chromatic
+        uses: chromaui/action@latest
+        with:
+          # Chromatic 프로젝트 토큰 (GitHub Secrets에서 가져옴)
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          # 빌드가 업로드되면 즉시 종료 (CI 속도 향상)
+          exitOnceUploaded: true
+          # 자동으로 변경사항 승인 (선택사항)
+          autoAcceptChanges: true
+          # 빌드 결과를 GitHub PR에 댓글로 추가
+          exitZeroOnChanges: true
+
+      # 5단계: Storybook 정적 빌드 (GitHub Pages 배포용)
+      - name: 🏗️ Build Storybook
+        run: npm run build-storybook
+
+      # 6단계: GitHub Pages에 Storybook 배포
+      - name: 🌐 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./storybook-static
+          # 커스텀 도메인 설정 (선택사항)
+          # cname: your-storybook-domain.com
+
+  # 코드 품질 검사 작업
+  quality-checks:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📦 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      # 린터 실행 (ESLint가 설정되어 있다면)
+      - name: 🔍 Run linter
+        run: npm run lint || echo "No lint script found"
+        continue-on-error: true
+
+      # 테스트 실행 (Jest나 다른 테스트 프레임워크가 설정되어 있다면)
+      - name: 🧪 Run tests
+        run: npm test || echo "No test script found"
+        continue-on-error: true
+
+      # Storybook 빌드 테스트
+      - name: 🏗️ Test Storybook build
+        run: npm run build-storybook

@@ -8,9 +8,10 @@ const config = {
   ],
   "addons": [
     "@chromatic-com/storybook",
+    "@storybook/addon-designs",
     "@storybook/addon-docs",
     "@storybook/addon-a11y",
-    "@storybook/addon-vitest"
+    "@storybook/addon-vitest",
   ],
   "framework": {
     "name": "@storybook/react-vite",
