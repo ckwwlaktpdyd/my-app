@@ -26,11 +26,23 @@ export const Primary = {
     primary: true,
     label: 'Button',
   },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/7YaZcmb7hUIj0nqV1o0T2E/%EC%84%9C%EC%8A%B9%EC%97%B0-%EC%8B%A4%EC%8A%B5-%ED%85%9C%ED%94%8C%EB%A6%BF?node-id=1-2419&t=R75x74qcWEmoSdA5-1',
+    },
+  },
 };
 
 export const Secondary = {
   args: {
     label: 'Button',
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/7YaZcmb7hUIj0nqV1o0T2E/%EC%84%9C%EC%8A%B9%EC%97%B0-%EC%8B%A4%EC%8A%B5-%ED%85%9C%ED%94%8C%EB%A6%BF?node-id=1-2419&t=R75x74qcWEmoSdA5-1',
+    },
   },
 };
 
@@ -39,11 +51,23 @@ export const Large = {
     size: 'large',
     label: 'Button',
   },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/7YaZcmb7hUIj0nqV1o0T2E/%EC%84%9C%EC%8A%B9%EC%97%B0-%EC%8B%A4%EC%8A%B5-%ED%85%9C%ED%94%8C%EB%A6%BF?node-id=1-2419&t=R75x74qcWEmoSdA5-1',
+    },
+  },
 };
 
 export const Small = {
   args: {
     size: 'small',
     label: 'Button',
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/7YaZcmb7hUIj0nqV1o0T2E/%EC%84%9C%EC%8A%B9%EC%97%B0-%EC%8B%A4%EC%8A%B5-%ED%85%9C%ED%94%8C%EB%A6%BF?node-id=1-2419&t=R75x74qcWEmoSdA5-1',
+    },
   },
 };
