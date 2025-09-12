@@ -1,0 +1,131 @@
+/* Reshaped Design System Modal Styles */
+
+.reshaped-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.reshaped-modal {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+/* Size variants */
+.reshaped-modal--small {
+  max-width: 400px;
+}
+
+.reshaped-modal--medium {
+  max-width: 500px;
+}
+
+.reshaped-modal--large {
+  max-width: 700px;
+}
+
+.reshaped-modal--fullscreen {
+  max-width: 95vw;
+  max-height: 95vh;
+  width: 95vw;
+  height: 95vh;
+}
+
+.reshaped-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.reshaped-modal-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.reshaped-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #8e8e93;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reshaped-modal-close:hover {
+  background-color: #f2f2f7;
+  color: #1a1a1a;
+}
+
+.reshaped-modal-close:active {
+  background-color: #e0e0e0;
+}
+
+.reshaped-modal-content {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+/* Animation */
+.reshaped-modal-backdrop {
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+.reshaped-modal {
+  animation: modalSlideIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
