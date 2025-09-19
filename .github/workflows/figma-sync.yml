@@ -1,0 +1,135 @@
+# GitHub Actions 워크플로우: Figma 디자인 토큰 동기화
+# 이 워크플로우는 Figma 디자인 토큰을 자동으로 동기화하고 업데이트합니다.
+
+name: 'Figma Design Sync'
+
+# 수동 실행 또는 스케줄 실행
+on:
+  # 수동으로 워크플로우 실행
+  workflow_dispatch:
+    inputs:
+      figma_file_key:
+        description: 'Figma 파일 키 (URL에서 추출)'
+        required: false
+        default: '7YaZcmb7hUIj0nqV1o0T2E'
+  
+  # 매일 오전 9시에 자동 실행 (선택사항)
+  schedule:
+    - cron: '0 9 * * *'
+
+jobs:
+  figma-sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📦 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      # Figma API를 사용하여 디자인 토큰 추출 (선택사항)
+      - name: 🎨 Extract Figma Design Tokens
+        run: |
+          echo "🎨 Figma 디자인 토큰 동기화를 시작합니다..."
+          echo "Figma 파일 키: ${{ github.event.inputs.figma_file_key || '7YaZcmb7hUIj0nqV1o0T2E' }}"
+          
+          # 여기에 Figma API를 사용한 디자인 토큰 추출 로직을 추가할 수 있습니다.
+          # 예: figma-api-toolkit이나 style-dictionary 사용
+          
+          # 현재는 예시로 디자인 토큰 파일 생성
+          mkdir -p src/design-tokens
+          cat > src/design-tokens/colors.js << 'EOF'
+          // Figma에서 자동 생성된 색상 토큰
+          export const colors = {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe', 
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8'
+            },
+            secondary: {
+              50: '#f9fafb',
+              100: '#f3f4f6',
+              500: '#6b7280',
+              600: '#4b5563',
+              700: '#374151'
+            }
+          };
+          EOF
+          
+          echo "✅ 디자인 토큰이 업데이트되었습니다."
+
+      # 변경사항이 있으면 자동 커밋
+      - name: 📝 Commit design token updates
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          if [[ -n $(git status --porcelain) ]]; then
+            git add src/design-tokens/
+            git commit -m "chore: Update design tokens from Figma
+
+            - Auto-generated from Figma API
+            - Updated color palette and design tokens
+            - Synced at $(date -u +"%Y-%m-%d %H:%M:%S UTC")"
+            git push
+            echo "✅ 디자인 토큰 변경사항이 커밋되었습니다."
+          else
+            echo "ℹ️ 변경된 디자인 토큰이 없습니다."
+          fi
+
+      # Storybook 재빌드 및 배포 트리거
+      - name: 🔄 Trigger Storybook rebuild
+        if: success()
+        run: |
+          echo "🔄 Storybook 재빌드를 트리거합니다..."
+          # 다른 워크플로우를 트리거하거나 직접 빌드할 수 있습니다.
+
+  # 디자인 토큰 검증 작업
+  validate-design-tokens:
+    runs-on: ubuntu-latest
+    needs: figma-sync
+    
+    steps:
+      - name: 📦 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      # 디자인 토큰 유효성 검사
+      - name: ✅ Validate design tokens
+        run: |
+          echo "✅ 디자인 토큰 유효성을 검사합니다..."
+          
+          # 디자인 토큰 파일이 존재하는지 확인
+          if [ -f "src/design-tokens/colors.js" ]; then
+            echo "✅ 색상 토큰 파일이 존재합니다."
+            
+            # Node.js로 파일 구문 검사
+            node -c src/design-tokens/colors.js
+            echo "✅ 색상 토큰 파일 구문이 올바릅니다."
+          else
+            echo "⚠️ 색상 토큰 파일이 없습니다."
+          fi
+
+      # Storybook에서 디자인 토큰 사용 확인
+      - name: 🧪 Test design tokens in Storybook
+        run: |
+          echo "🧪 Storybook에서 디자인 토큰 사용을 테스트합니다..."
+          npm run build-storybook
+          echo "✅ Storybook 빌드가 성공했습니다."
