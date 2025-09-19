@@ -13,9 +13,9 @@ on:
         required: false
         default: '7YaZcmb7hUIj0nqV1o0T2E'
   
-  # 매일 오전 9시에 자동 실행 (선택사항)
-  schedule:
-    - cron: '0 9 * * *'
+  # 매일 오전 9시에 자동 실행 (선택사항) - 현재 비활성화
+  # schedule:
+  #   - cron: '0 9 * * *'
 
 jobs:
   figma-sync:
